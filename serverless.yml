@@ -1,0 +1,14 @@
+service: serverless-test-app
+provider:
+ name: aws
+ runtime: nodejs18.x
+ memorySize: 128
+ timeout: 10
+ stage: dev
+ region: us-east-1
+functions:
+ api:
+   handler: lambda.handler
+   events:
+     - http: ANY {proxy+}
+     - http: ANY /
